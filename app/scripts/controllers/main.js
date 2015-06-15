@@ -29,9 +29,9 @@ angular.module('weatherForecastApp')
         case '04d':
           return 'wi wi-cloudy';
         case '09d':
-          return 'wi wi-rain';
+          return 'wi wi-showers';
         case '10d':
-          return 'wi wi-day-rain';
+          return 'wi wi-rain';
         case '11d':
           return 'wi wi-thunderstorm';
         case '13d':
