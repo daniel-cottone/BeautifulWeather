@@ -1,0 +1,43 @@
+body {
+  height: 100%;
+  background-image: url("../images/background.jpg");
+  color: #fff;
+  text-align: center;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+div.forecast-item {
+  margin-right: 10px;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+div.forecast-item-selected {
+  background-color: #5492C6;
+  border-radius: 10px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
