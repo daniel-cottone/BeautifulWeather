@@ -41,3 +41,12 @@ div.forecast-item-selected {
 .container-narrow > hr {
   margin: 30px 0;
 }
+
+/* Animations */
+.forecast-animate.ng-enter {
+  animation: fadeIn 1s;
+}
+
+.forecast-animate.ng-leave {
+  animation: fadeOut 1s;
+}
