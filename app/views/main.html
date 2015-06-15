@@ -5,23 +5,24 @@
     <div class="col-lg-8 form-group">
       <label for="city" class="control-label">City: </label>
       <div class="input-group">
-        <input type="text" ng-model="city" class="form-control" id="city" placeholder="Nashville" />
+        <input type="text" ng-model="city" class="form-control" id="city" placeholder="Enter city" ng-model-options="{ debounce: 500 }" ng-change="getForecast()" />
       </div>
     </div>
-    <button type="button" class="btn btn-info" ng-click="getForecast()">Get Forecast</button>
   </form>
 </div>
 
 <div class="container">
   <div class="row row-centered">
-    <div class="col-lg-1 col-centered forecast-item" ng-repeat="day in forecast.list track by $index">
+    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in weekForecast.list track by $index">
       <p class="text-center">
         {{ (day.dt * 1000) | date: format: 'EEE' }}
       </p>
       <p class="text-center">
         {{ day.temp.min | number: 0 }}° - {{ day.temp.max | number: 0 }}°
       </p>
-      <!--<i class="wi wi-cloudy"></i>-->
+      <p class="text-center">
+        <i ng-class="setClass(day.weather[0].icon)"></i>
+      </p>
       <p class="text-center">
         {{ day.weather[0].main }}
       </p>
