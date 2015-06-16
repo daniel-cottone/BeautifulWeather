@@ -12,20 +12,20 @@
     </form>
   </div>
 
-  <!-- Current weather
-  <div class="row row-centered top-buffer">
-    <div class="col-lg-3 col-centered forecast-item forecast-animate">
+  <!-- Current weather -->
+  <div class="row row-centered bottom-buffer top-buffer">
+    <div class="col-lg-3 col-centered forecast-item forecast-animate" ng-show="city">
       <p class="text-center">
-        <h3>{{ weather.name }}</h3>
+        <h3>Weather For {{ address.city }} {{ address.region }}</h3>
       </p>
     </div>
     <div class="col-lg-4 col-centered forecast-item forecast-animate">
     </div>
-  </div>-->
+  </div>
 
   <!-- 7 day forecast -->
-  <div class="row row-centered top-buffer">
-    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index">
+  <div class="row row-centered">
+    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
       <p class="text-center">
         {{ (day.dt * 1000) | date: 'EEE - M/d' }}
       </p>
