@@ -1,7 +1,7 @@
 <div class="container">
 
   <!-- Heading and form input -->
-  <div class="row row-centered top-buffer">
+  <div class="row row-centered top-buffer text-center">
     <form class="form-inline">
       <div class="col-lg-7 form-group">
         <h1>Weather Forecast</h1>
@@ -15,8 +15,20 @@
   <!-- Current weather -->
   <div class="row row-centered bottom-buffer top-buffer">
     <div class="col-lg-3 col-centered forecast-item forecast-animate" ng-show="city">
-      <p class="text-center">
-        <h4>Weather For {{ address.city }} {{ address.region }}</h4>
+      <p class="h5">
+        Weather for: {{ address.city }} {{ address.region }}
+      </p>
+      <p class="h1 text-right">
+        {{ weather.main.temp | number: 0 }}°
+        <span class="pull-left"><i ng-class="setClass(weather.weather[0].icon)"></i></span>
+      </p>
+      <p class="text-right">
+        Hi: {{ weather.main.temp_min | number: 0 }}°
+        <span class="pull-left">{{ weather.weather[0].main }}</span>
+      </p>
+      <p class="text-right">
+        Lo: {{ weather.main.temp_max | number: 0 }}°
+        <span class="pull-left">Hum: {{ weather.main.humidity }}%</span>
       </p>
     </div>
     <div class="col-lg-4 col-centered forecast-item forecast-animate">
