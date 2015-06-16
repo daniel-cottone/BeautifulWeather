@@ -8,12 +8,17 @@
  * Controller of the weatherForecastApp
  */
 angular.module('weatherForecastApp')
-  .controller('MainCtrl', function ($scope, $animate, Forecast) {
+  .controller('MainCtrl', function ($scope, $animate, Forecast, Weather) {
 
-    // Promise chain to resolve forecast
-    $scope.getForecast = function() {
-      Forecast.query({ q: $scope.city, units: 'imperial' }, function (data) {
-        $scope.weekForecast = data;
+    // Promise chain to resolve current weather and 7 day forecast
+    $scope.getWeather = function() {
+      Weather.query({ q: $scope.city, units: 'imperial' }, function (data) {
+        $scope.weather = data;  
+      }).$promise
+      .then(function () {
+        return Forecast.query({ q: $scope.city, units: 'imperial' }, function (data) {
+          $scope.forecast = data;
+        }).$promise;
       });
     };
 
