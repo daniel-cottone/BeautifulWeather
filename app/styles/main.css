@@ -16,6 +16,10 @@ body {
   display: inline-block;
 }
 
+.bottom-buffer {
+  margin-bottom: 25px;
+}
+
 .top-buffer {
   margin-top: 100px;
 }
@@ -27,10 +31,10 @@ div.forecast-item {
 }
 
 /* Animations */
-.forecast-animate.ng-enter {
+.forecast-animate.ng-enter, .forecast-animate.ng-hide-remove {
   animation: zoomIn 1s;
 }
 
-.forecast-animate.ng-leave {
+.forecast-animate.ng-leave, .forecast-animate.ng-hide-add {
   animation: zoomOut 1s;
 }
