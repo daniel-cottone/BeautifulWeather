@@ -7,16 +7,17 @@ body {
 
 /* centered columns styles */
 .row-centered {
-    text-align:center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
+  display: inline-block;
+}
+
+.top-buffer {
+  margin-top: 100px;
 }
 
 div.forecast-item {
@@ -25,28 +26,11 @@ div.forecast-item {
   border-radius: 10px;
 }
 
-div.forecast-item-selected {
-  background-color: #5492C6;
-  border-radius: 10px;
-}
-
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
 /* Animations */
 .forecast-animate.ng-enter {
-  animation: fadeIn 1s;
+  animation: zoomIn 1s;
 }
 
 .forecast-animate.ng-leave {
-  animation: fadeOut 1s;
+  animation: zoomOut 1s;
 }
