@@ -1,27 +1,41 @@
-<h1>Weather Forecast</h1>
-
 <div class="container">
-  <form class="form-inline">
-    <div class="col-lg-8 form-group">
-      <div class="input-group">
-        <input type="text" ng-model="city" class="form-control" id="city" placeholder="Enter city" ng-model-options="{ debounce: 500 }" ng-change="getForecast()" />
+
+  <!-- Heading and form input -->
+  <div class="row row-centered top-buffer">
+    <form class="form-inline">
+      <div class="col-lg-7 form-group">
+        <h1>Weather Forecast</h1>
+        <div class="input-group">
+          <input type="text" ng-model="city" class="form-control" id="city" placeholder="Enter city" ng-model-options="{ debounce: 500 }" ng-change="getWeather()" />
+        </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 
-<div class="container">
-  <div class="row row-centered">
-    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in weekForecast.list track by $index">
+  <!-- Current weather
+  <div class="row row-centered top-buffer">
+    <div class="col-lg-3 col-centered forecast-item forecast-animate">
+      <p class="text-center">
+        <h3>{{ weather.name }}</h3>
+      </p>
+    </div>
+    <div class="col-lg-4 col-centered forecast-item forecast-animate">
+    </div>
+  </div>-->
+
+  <!-- 7 day forecast -->
+  <div class="row row-centered top-buffer">
+    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index">
       <p class="text-center">
         {{ (day.dt * 1000) | date: 'EEE - M/d' }}
       </p>
       <p class="text-center">
-        Hi: {{ day.temp.min | number: 0 }}°   Lo: {{ day.temp.max | number: 0 }}°
+        Hi: {{ day.temp.min | number: 0 }}° Lo: {{ day.temp.max | number: 0 }}°
       </p>
       <p class="text-center">
         <i ng-class="setClass(day.weather[0].icon)"></i> {{ day.weather[0].main }}
       </p>
     </div>
   </div>
+
 </div>
