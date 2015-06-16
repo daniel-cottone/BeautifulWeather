@@ -14,12 +14,13 @@
 
   <!-- Current weather -->
   <div class="row row-centered bottom-buffer top-buffer">
-    <div class="col-lg-3 col-centered forecast-item forecast-animate" ng-show="city">
-      <p class="h5">
-        Weather for: {{ address.city }} {{ address.region }}
+    <div class="col-lg-3 fixed col-centered forecast-item forecast-animate" ng-show="city">
+      <p class="h3 text-center">
+        {{ address.city }}, {{ address.region }}
       </p>
-      <p class="h1 text-right">
-        {{ weather.main.temp | number: 0 }}°
+      <p class="h1 text-center">
+        <span class="pull-right">{{ weather.main.temp | number: 0 }}°</span>
+        <span class="h4">{{ (weather.dt * 1000) | date: 'EEE, MMM d' }}</span>
         <span class="pull-left"><i ng-class="setClass(weather.weather[0].icon)"></i></span>
       </p>
       <p class="text-right">
