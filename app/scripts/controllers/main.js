@@ -8,15 +8,20 @@
  * Controller of the weatherForecastApp
  */
 angular.module('weatherForecastApp')
-  .controller('MainCtrl', function ($scope, $animate, Forecast, Weather) {
+  .controller('MainCtrl', function ($scope, $animate, Address, Forecast, Weather) {
 
-    // Promise chain to resolve current weather and 7 day forecast
+    // Promise chain to resolve address, current weather, and 7 day forecast
     $scope.getWeather = function() {
-      Weather.query({ q: $scope.city, units: 'imperial' }, function (data) {
-        $scope.weather = data;  
+      Address.query({ address: $scope.city }, function (data) {
+        $scope.address = data;
       }).$promise
       .then(function () {
-        return Forecast.query({ q: $scope.city, units: 'imperial' }, function (data) {
+        return Weather.query({ lat: $scope.address.latitude, lon: $scope.address.longitude, units: 'imperial' }, function (data) {
+          $scope.weather = data;
+        }).$promise;
+      })
+      .then(function () {
+        return Forecast.query({ lat: $scope.address.latitude, lon: $scope.address.longitude, units: 'imperial' }, function (data) {
           $scope.forecast = data;
         }).$promise;
       });
