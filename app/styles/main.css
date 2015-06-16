@@ -15,6 +15,10 @@ body {
   display: inline-block;
 }
 
+.fixed {
+  width: 41%;
+}
+
 .bottom-buffer {
   margin-bottom: 25px;
 }
