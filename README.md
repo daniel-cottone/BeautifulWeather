@@ -1,5 +1,13 @@
-#weather-forecast
+#Weather Forecast
 
 ##About
 
-A simple AngularJS weather forecast app.
+A simple weather forecast app developed with AngularJS.
+
+## Build & development
+
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.
