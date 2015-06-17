@@ -6,7 +6,7 @@ body {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-/* Preload backgrounds */
+/* Background styles */
 .default {
   background: url("../images/default.jpg") no-repeat;
 }
