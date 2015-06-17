@@ -27,28 +27,36 @@ angular.module('weatherForecastApp')
       });
     };
 
-    // Sets the weather icon class
+    // Sets the weather icon class and background
     $scope.setClass = function(code) {
       switch(code) {
         case '01d':
+          $('body').css('background-image', 'url(../images/day.jpg)');
           return 'wi wi-day-sunny';
         case '02d':
+          $('body').css('background-image', 'url(../images/cloudy.jpg)');
           return 'wi wi-day-cloudy';
         case '03d':
+          $('body').css('background-image', 'url(../images/cloudy.jpg)');
           return 'wi wi-cloudy';
         case '04d':
+          $('body').css('background-image', 'url(../images/cloudy.jpg)');
           return 'wi wi-cloudy';
         case '09d':
+          $('body').css('background-image', 'url(../images/rainy.jpg)');
           return 'wi wi-showers';
         case '10d':
+          $('body').css('background-image', 'url(../images/rainy.jpg)');
           return 'wi wi-rain';
         case '11d':
+          $('body').css('background-image', 'url(../images/thunderstorm.jpg)');
           return 'wi wi-thunderstorm';
         case '13d':
           return 'wi wi-snow';
         case '50d':
           return 'wi wi-fog';
         default:
+          $('body').css('background-image', 'url(../images/default.jpg)');
           return 'wi wi-day-sunny';
       }
     };
