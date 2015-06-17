@@ -18,6 +18,7 @@ angular.module('weatherForecastApp')
       .then(function () {
         return Weather.query({ lat: $scope.address.latitude, lon: $scope.address.longitude, units: 'imperial' }, function (data) {
           $scope.weather = data;
+          $scope.setBackground($scope.weather.weather[0].icon);
         }).$promise;
       })
       .then(function () {
@@ -27,36 +28,62 @@ angular.module('weatherForecastApp')
       });
     };
 
-    // Sets the weather icon class and background
-    $scope.setClass = function(code) {
+    // Sets the background
+    $scope.setBackground = function(code) {
       switch(code) {
         case '01d':
           $('body').css('background-image', 'url(../images/day.jpg)');
-          return 'wi wi-day-sunny';
+          break;
         case '02d':
           $('body').css('background-image', 'url(../images/cloudy.jpg)');
-          return 'wi wi-day-cloudy';
+          break;
         case '03d':
           $('body').css('background-image', 'url(../images/cloudy.jpg)');
-          return 'wi wi-cloudy';
+          break;
         case '04d':
           $('body').css('background-image', 'url(../images/cloudy.jpg)');
-          return 'wi wi-cloudy';
+          break;
         case '09d':
           $('body').css('background-image', 'url(../images/rainy.jpg)');
-          return 'wi wi-showers';
+          break;
         case '10d':
           $('body').css('background-image', 'url(../images/rainy.jpg)');
-          return 'wi wi-rain';
+          break;
         case '11d':
           $('body').css('background-image', 'url(../images/thunderstorm.jpg)');
+          break;
+        case '13d':
+          break;
+        case '50d':
+          break;
+        default:
+          $('body').css('background-image', 'url(../images/default.jpg)');
+          break;
+      }
+    };
+
+    // Sets the weather icon class
+    $scope.setClass = function(code) {
+      switch(code) {
+        case '01d':
+          return 'wi wi-day-sunny';
+        case '02d':
+          return 'wi wi-day-cloudy';
+        case '03d':
+          return 'wi wi-cloudy';
+        case '04d':
+          return 'wi wi-cloudy';
+        case '09d':
+          return 'wi wi-showers';
+        case '10d':
+          return 'wi wi-rain';
+        case '11d':
           return 'wi wi-thunderstorm';
         case '13d':
           return 'wi wi-snow';
         case '50d':
           return 'wi wi-fog';
         default:
-          $('body').css('background-image', 'url(../images/default.jpg)');
           return 'wi wi-day-sunny';
       }
     };
