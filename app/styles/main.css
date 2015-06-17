@@ -1,7 +1,10 @@
 body {
   height: 100%;
-  background-image: url("../images/background.jpg");
+  background-image: url("../images/default.jpg");
+  background-repeat: no-repeat;
+  transition: background ease-in-out 1s;
   color: #fff;
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 /* centered columns styles */
