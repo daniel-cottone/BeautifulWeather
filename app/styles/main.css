@@ -1,10 +1,30 @@
 body {
   height: 100%;
-  background-image: url("../images/default.jpg");
-  background-repeat: no-repeat;
+  background: url("../images/default.jpg") no-repeat;
   transition: background ease-in-out 1s;
   color: #fff;
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* Preload backgrounds */
+.default {
+  background: url("../images/default.jpg") no-repeat;
+}
+
+.day {
+  background: url("../images/day.jpg") no-repeat;
+}
+
+.cloudy {
+  background: url("../images/cloudy.jpg") no-repeat;
+}
+
+.rainy {
+  background: url("../images/rainy.jpg") no-repeat;
+}
+
+.thunderstorm {
+  background: url("../images/thunderstorm.jpg") no-repeat;
 }
 
 /* centered columns styles */

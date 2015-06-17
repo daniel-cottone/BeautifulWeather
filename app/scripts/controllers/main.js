@@ -30,34 +30,35 @@ angular.module('weatherForecastApp')
 
     // Sets the background
     $scope.setBackground = function(code) {
+      $('body').removeClass();
       switch(code) {
         case '01d':
-          $('body').css('background-image', 'url(../images/day.jpg)');
+          $('body').addClass('day');
           break;
         case '02d':
-          $('body').css('background-image', 'url(../images/cloudy.jpg)');
+          $('body').addClass('cloudy');
           break;
         case '03d':
-          $('body').css('background-image', 'url(../images/cloudy.jpg)');
+          $('body').addClass('cloudy');
           break;
         case '04d':
-          $('body').css('background-image', 'url(../images/cloudy.jpg)');
+          $('body').addClass('cloudy');
           break;
         case '09d':
-          $('body').css('background-image', 'url(../images/rainy.jpg)');
+          $('body').addClass('rainy');
           break;
         case '10d':
-          $('body').css('background-image', 'url(../images/rainy.jpg)');
+          $('body').addClass('rainy');
           break;
         case '11d':
-          $('body').css('background-image', 'url(../images/thunderstorm.jpg)');
+          $('body').addClass('thunderstorm');
           break;
         case '13d':
           break;
         case '50d':
           break;
         default:
-          $('body').css('background-image', 'url(../images/default.jpg)');
+          $('body').addClass('default');
           break;
       }
     };
