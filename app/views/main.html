@@ -14,7 +14,7 @@
 
   <!-- Current weather -->
   <div class="row row-centered bottom-buffer top-buffer">
-    <div class="col-lg-3 fixed col-centered forecast-item forecast-animate" ng-show="city">
+    <div class="col-lg-3 fixed col-centered forecast-item forecast-animate" ng-show="city && (address.city != null)">
       <p class="h3 text-center">
         <span ng-show="address.city || address.zip">{{ address.city }}, </span>
         {{ address.region }}
@@ -25,12 +25,8 @@
         <span class="pull-left"><i ng-class="setClass(weather.weather[0].icon)"></i></span>
       </p>
       <p class="text-right">
-        Hi: {{ weather.main.temp_min | number: 0 }}°
+        Hum: {{ weather.main.humidity }}%
         <span class="pull-left">{{ weather.weather[0].main }}</span>
-      </p>
-      <p class="text-right">
-        Lo: {{ weather.main.temp_max | number: 0 }}°
-        <span class="pull-left">Hum: {{ weather.main.humidity }}%</span>
       </p>
     </div>
     <div class="col-lg-4 col-centered forecast-item forecast-animate">
@@ -41,10 +37,10 @@
   <div class="row row-centered">
     <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
       <p class="text-center">
-        {{ (day.dt * 1000) | date: 'EEE - M/d' }}
+        {{ (day.dt * 1000) | date: 'EEE, MMM d' }}
       </p>
       <p class="text-center">
-        Hi: {{ day.temp.min | number: 0 }}° Lo: {{ day.temp.max | number: 0 }}°
+        Hi: {{ day.temp.max | number: 0 }}° Lo: {{ day.temp.min | number: 0 }}°
       </p>
       <p class="text-center">
         <i ng-class="setClass(day.weather[0].icon)"></i> {{ day.weather[0].main }}
