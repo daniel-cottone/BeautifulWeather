@@ -2,7 +2,7 @@
 
 ##About
 
-A simple weather forecast app developed with AngularJS.
+[Beautiful Weather](http://weather.danielcottone.com/) is a simple, responsively designed weather forecast app developed with AngularJS.
 
 ## Build & development
 
