@@ -6,25 +6,33 @@ body {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-/* Background styles */
-.default {
+/* Background styles and preload */
+#default, .default {
   background: url("../images/default.jpg") no-repeat;
 }
 
-.day {
+#day, .day {
   background: url("../images/day.jpg") no-repeat;
 }
 
-.cloudy {
+#cloudy, .cloudy {
   background: url("../images/cloudy.jpg") no-repeat;
 }
 
-.rainy {
+#rainy, .rainy {
   background: url("../images/rainy.jpg") no-repeat;
 }
 
-.thunderstorm {
+#thunderstorm, .thunderstorm {
   background: url("../images/thunderstorm.jpg") no-repeat;
+}
+
+#foggy, .foggy {
+  background: url("../images/foggy.jpg") no-repeat;
+}
+
+#night, .night {
+  background: url("../images/night.jpg") no-repeat;
 }
 
 /* centered columns styles */

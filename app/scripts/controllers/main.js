@@ -35,6 +35,9 @@ angular.module('weatherForecastApp')
         case '01d':
           $('body').addClass('day');
           break;
+        case '01n':
+          $('body').addClass('night');
+          break;
         case '02d':
           $('body').addClass('cloudy');
           break;
@@ -56,6 +59,7 @@ angular.module('weatherForecastApp')
         case '13d':
           break;
         case '50d':
+          $('body').addClass('foggy');
           break;
         default:
           $('body').addClass('default');
