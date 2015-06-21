@@ -6,32 +6,45 @@ body {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-/* Background styles and preload */
-#default, .default {
+/* Preload images */
+body:after {
+  display: none;
+  content:
+    url("../images/default.jpg")
+    url("../images/day.jpg")
+    url("../images/cloudy.jpg")
+    url("../images/rainy.jpg")
+    url("../images/thunderstorm.jpg")
+    url("../images/foggy.jpg")
+    url("../images/night.jpg");
+}
+
+/* Background styles */
+.default {
   background: url("../images/default.jpg") no-repeat;
 }
 
-#day, .day {
+.day {
   background: url("../images/day.jpg") no-repeat;
 }
 
-#cloudy, .cloudy {
+.cloudy {
   background: url("../images/cloudy.jpg") no-repeat;
 }
 
-#rainy, .rainy {
+.rainy {
   background: url("../images/rainy.jpg") no-repeat;
 }
 
-#thunderstorm, .thunderstorm {
+.thunderstorm {
   background: url("../images/thunderstorm.jpg") no-repeat;
 }
 
-#foggy, .foggy {
+.foggy {
   background: url("../images/foggy.jpg") no-repeat;
 }
 
-#night, .night {
+.night {
   background: url("../images/night.jpg") no-repeat;
 }
 
