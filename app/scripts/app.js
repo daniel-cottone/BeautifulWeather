@@ -15,7 +15,11 @@ angular
     'ui.router',
     'ui.utils'
   ])
-  .config(function ($stateProvider) {
+  .config(function ($locationProvider, $stateProvider) {
+
+    // Disable hashbangs in URL
+    $locationProvider.html5Mode(true);
+
     $stateProvider
 
       // Main Page
