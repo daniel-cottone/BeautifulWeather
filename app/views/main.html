@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
 
   <!-- Heading and form input -->
   <div class="row row-centered top-buffer text-center">
     <form class="form-inline">
-      <div class="col-lg-7 form-group">
+      <div class="col-md-12 form-group">
         <h1>Beautiful Weather</h1>
         <div class="input-group">
           <input type="text" ng-model="city" class="form-control" id="city" placeholder="Enter location" ng-model-options="{ debounce: 650 }" ng-change="getWeather()" />
@@ -14,7 +14,7 @@
 
   <!-- Current weather -->
   <div class="row row-centered bottom-buffer top-buffer">
-    <div class="col-lg-3 fixed col-centered forecast-item forecast-animate" ng-show="city && (address.city != null)">
+    <div class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (address.city != null)">
       <p class="h3 text-center">
         <span ng-show="address.city || address.zip">{{ address.city }}, </span>
         {{ address.region }}
@@ -29,18 +29,19 @@
         <span class="pull-left">{{ weather.weather[0].main }}</span>
       </p>
     </div>
-    <div class="col-lg-4 col-centered forecast-item forecast-animate">
-    </div>
   </div>
 
   <!-- 7 day forecast -->
   <div class="row row-centered">
-    <div class="col-lg-1 col-centered forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
+    <div class="col-md-1 col-centered col-min forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
       <p class="text-center">
         {{ (day.dt * 1000) | date: 'EEE, MMM d' }}
       </p>
       <p class="text-center">
-        Hi: {{ day.temp.max | number: 0 }}° Lo: {{ day.temp.min | number: 0 }}°
+        Hi: {{ day.temp.max | number: 0 }}°
+      </p>
+      <p class="text-center">
+        Lo: {{ day.temp.min | number: 0 }}°
       </p>
       <p class="text-center">
         <i ng-class="setClass(day.weather[0].icon)"></i> {{ day.weather[0].main }}

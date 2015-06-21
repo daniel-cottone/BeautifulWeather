@@ -50,13 +50,18 @@ body:after {
 
 /* centered columns styles */
 .row-centered {
-  display: block;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .col-centered {
   display: inline-block;
+  float: none;
+}
+
+.col-min {
+  min-width: 110px;
 }
 
 .fixed {
@@ -73,6 +78,7 @@ body:after {
 
 div.forecast-item {
   margin-right: 10px;
+  margin-bottom: 10px;
   background-color: rgba(0,0,0,0.1);
   border-radius: 10px;
 }
