@@ -68,12 +68,12 @@ body:after {
   width: 41%;
 }
 
-.bottom-buffer {
-  margin-bottom: 25px;
-}
-
 .top-buffer {
   margin-top: 100px;
+}
+
+.bottom-buffer {
+  margin-bottom: 5px;
 }
 
 div.forecast-item {
