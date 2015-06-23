@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <!-- Heading and form input -->
+  <!-- Heading and form input
   <div class="row row-centered top-buffer text-center">
     <form class="form-inline">
       <div class="col-md-12 form-group">
@@ -10,10 +10,21 @@
         </div>
       </div>
     </form>
+  </div>-->
+
+  <div class="row row-centered top-buffer text-center">
+    <div class="col-md-12 col-centered bottom-buffer">
+      <h1>Beautiful Weather</h1>
+    </div>
+  </div>
+  <div class="row row-centered text-center">
+    <div class="col-md-3 col-centered">
+      <input type="text" ng-model="city" class="form-control" id="city" placeholder="Enter location" ng-model-options="{ debounce: 650 }" ng-change="getWeather()" />
+    </div>
   </div>
 
   <!-- Current weather -->
-  <div class="row row-centered bottom-buffer top-buffer">
+  <div class="row row-centered top-buffer">
     <div class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (address.city != null)">
       <p class="h3 text-center">
         <span ng-show="address.city || address.zip">{{ address.city }}, </span>
