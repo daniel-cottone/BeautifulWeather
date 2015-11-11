@@ -35,32 +35,46 @@ angular.module('weatherForecastApp')
       $('body').removeClass();
       switch(code) {
         case '01d':
-          $('body').addClass('day');
+          $('body').addClass('day-clear');
           break;
         case '01n':
-          $('body').addClass('night');
+          $('body').addClass('night-clear');
           break;
         case '02d':
-          $('body').addClass('cloudy');
+          $('body').addClass('day-clear');
+          break;
+        case '02n':
+          $('body').addClass('night-cloudy');
           break;
         case '03d':
           $('body').addClass('cloudy');
           break;
+        case '03n':
+          $('body').addClass('night-cloudy');
+          break;
         case '04d':
           $('body').addClass('cloudy');
           break;
+        case '04n':
+          $('body').addClass('night-cloudy');
+          break;
         case '09d':
+        case '09n':
           $('body').addClass('rainy');
           break;
         case '10d':
+        case '10n':
           $('body').addClass('rainy');
           break;
         case '11d':
+        case '11n':
           $('body').addClass('thunderstorm');
           break;
         case '13d':
+        case '13n':
           break;
         case '50d':
+        case '50n':
           $('body').addClass('foggy');
           break;
         default:

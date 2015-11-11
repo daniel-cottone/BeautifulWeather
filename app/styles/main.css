@@ -11,12 +11,13 @@ body:after {
   display: none;
   content:
     url("../images/default.jpg")
-    url("../images/day.jpg")
+    url("../images/day-clear.jpg")
     url("../images/cloudy.jpg")
     url("../images/rainy.jpg")
     url("../images/thunderstorm.jpg")
     url("../images/foggy.jpg")
-    url("../images/night.jpg");
+    url("../images/night-clear.jpg")
+    url("../images/night-cloudy.jpg");
 }
 
 /* Background styles */
@@ -24,8 +25,16 @@ body:after {
   background: url("../images/default.jpg") no-repeat;
 }
 
-.day {
-  background: url("../images/day.jpg") no-repeat;
+.day-clear {
+  background: url("../images/day-clear.jpg") no-repeat;
+}
+
+.night-clear {
+  background: url("../images/night-clear.jpg") no-repeat;
+}
+
+.night-cloudy {
+  background: url("../images/night-cloudy.jpg") no-repeat;
 }
 
 .cloudy {
@@ -42,10 +51,6 @@ body:after {
 
 .foggy {
   background: url("../images/foggy.jpg") no-repeat;
-}
-
-.night {
-  background: url("../images/night.jpg") no-repeat;
 }
 
 /* centered columns styles */
