@@ -18,13 +18,13 @@ angular.module('weatherForecastApp')
         $scope.formattedAddress = $scope.address.results[0].formatted_address;
       }).$promise
       .then(function () {
-        return Weather.query({ lat: $scope.location.latitude, lon: $scope.location.longitude, units: 'imperial' }, function (data) {
+        return Weather.query({ lat: $scope.location.lat, lon: $scope.location.lng, units: 'imperial' }, function (data) {
           $scope.weather = data;
           $scope.setBackground($scope.weather.weather[0].icon);
         }).$promise;
       })
       .then(function () {
-        return Forecast.query({ lat: $scope.location.latitude, lon: $scope.location.longitude, units: 'imperial' }, function (data) {
+        return Forecast.query({ lat: $scope.location.lat, lon: $scope.location.lng, units: 'imperial' }, function (data) {
           $scope.forecast = data;
         }).$promise;
       });
