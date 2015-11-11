@@ -25,10 +25,9 @@
 
   <!-- Current weather -->
   <div class="row row-centered top-buffer">
-    <div class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (address.city != null)">
+    <div class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (formattedAddress != null)">
       <p class="h3 text-center">
-        <span ng-show="address.city || address.zip">{{ address.city }}, </span>
-        {{ address.region }}
+        <span ng-show="formattedAddress">{{ formattedAddress }}</span>
       </p>
       <p class="h1 text-center">
         <span class="pull-right">{{ weather.main.temp | number: 0 }}°</span>

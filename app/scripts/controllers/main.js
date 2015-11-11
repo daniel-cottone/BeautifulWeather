@@ -14,15 +14,17 @@ angular.module('weatherForecastApp')
     $scope.getWeather = function() {
       Address.query({ address: $scope.city }, function (data) {
         $scope.address = data;
+        $scope.location = $scope.address.results[0].geometry.location;
+        $scope.formattedAddress = $scope.address.results[0].formatted_address;
       }).$promise
       .then(function () {
-        return Weather.query({ lat: $scope.address.latitude, lon: $scope.address.longitude, units: 'imperial' }, function (data) {
+        return Weather.query({ lat: $scope.location.latitude, lon: $scope.location.longitude, units: 'imperial' }, function (data) {
           $scope.weather = data;
           $scope.setBackground($scope.weather.weather[0].icon);
         }).$promise;
       })
       .then(function () {
-        return Forecast.query({ lat: $scope.address.latitude, lon: $scope.address.longitude, units: 'imperial' }, function (data) {
+        return Forecast.query({ lat: $scope.location.latitude, lon: $scope.location.longitude, units: 'imperial' }, function (data) {
           $scope.forecast = data;
         }).$promise;
       });
