@@ -6,13 +6,13 @@ describe('Service: Weather', function () {
   beforeEach(module('weatherForecastApp'));
 
   // instantiate service
-  var weather;
-  beforeEach(inject(function (_weather_) {
-    weather = _weather_;
+  var Weather;
+  beforeEach(inject(function (_Weather_) {
+    Weather = _Weather_;
   }));
 
-  it('should do something', function () {
-    expect(!!weather).toBe(true);
+  it('should exist', function () {
+    expect(!!Weather).toBe(true);
   });
 
 });

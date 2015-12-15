@@ -11,7 +11,7 @@ describe('Service: Forecast', function () {
     Forecast = _Forecast_;
   }));
 
-  it('should do something', function () {
+  it('should exist', function () {
     expect(!!Forecast).toBe(true);
   });
 

@@ -16,7 +16,16 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  /*it('should attach an address object to the scope', function () {
+    expect(!!scope.address).toBe(true);
   });
+
+  it('should attach a weather object to the scope', function () {
+    expect(!!scope.weather).toBe(true);
+  });
+
+  it('should attach a forecast object to the scope', function () {
+    expect(!!scope.forecast).toBe(true);
+  });*/
+
 });

@@ -11,7 +11,7 @@ describe('Service: Address', function () {
     Address = _Address_;
   }));
 
-  it('should do something', function () {
+  it('should exist', function () {
     expect(!!Address).toBe(true);
   });
 
