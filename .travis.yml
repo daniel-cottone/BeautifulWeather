@@ -6,11 +6,11 @@ node_js:
 # Pre-installation dependencies
 before_script:
   - 'npm install -g bower karma grunt-cli jshint'
-
-# Install dependencies
-install:
   - 'npm install'
   - 'bower install'
+
+# Install dependencies
+#install:
 
 # Create build
 script:
