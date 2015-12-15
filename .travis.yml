@@ -2,6 +2,16 @@
 language: node_js
 node_js:
   - "0.12"
+
+# Pre-installation dependencies
 before_script:
-  - 'npm install -g bower grunt-cli'
+  - 'npm install -g bower karma grunt-cli jshint'
+
+# Install dependencies
+install:
+  - 'npm install'
   - 'bower install'
+
+# Create build
+script:
+  - 'grunt build'
