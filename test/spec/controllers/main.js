@@ -6,26 +6,24 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('weatherForecastApp'));
 
   var MainCtrl,
-    scope;
+    scope,
+    Address;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _Address_) {
     scope = $rootScope.$new();
+    scope.city = 'Nashville';
+    Address = _Address_;
+    spyOn(Address, 'query').and.callThrough();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      Addres: Address
     });
   }));
 
-  /*it('should attach an address object to the scope', function () {
-    expect(!!scope.address).toBe(true);
+  it('should collect data from API', function () {
+    scope.getWeather();
+    expect(Address.query).toHaveBeenCalled();
   });
-
-  it('should attach a weather object to the scope', function () {
-    expect(!!scope.weather).toBe(true);
-  });
-
-  it('should attach a forecast object to the scope', function () {
-    expect(!!scope.forecast).toBe(true);
-  });*/
 
 });
