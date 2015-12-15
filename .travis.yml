@@ -1,3 +1,4 @@
+# Travis CI configuration
 sudo: false
 language: node_js
 node_js:
