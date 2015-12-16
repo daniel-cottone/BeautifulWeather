@@ -359,7 +359,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'bower_components/lato',
           flatten: false,
-          src: 'font/*',
+          src: 'font/**/*',
           dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
