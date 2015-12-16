@@ -21,9 +21,6 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
-  // Load coveralls
-  grunt.loadNpmTasks('grunt-karma-coveralls');
-
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -414,6 +411,8 @@ module.exports = function (grunt) {
     }
   });
 
+  // Load coveralls
+  grunt.loadNpmTasks('grunt-karma-coveralls');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {

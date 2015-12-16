@@ -7,6 +7,8 @@ before_script:
 - bower install
 script:
 - grunt build
+after_script:
+- cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 deploy:
   - provider: s3
     bucket: "beautiful-weather-test"
