@@ -9,6 +9,15 @@
     "angular-ui-utils": "~0.2.3",
     "angular-animate": "~1.4.0"
   },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    }
+  },
   "devDependencies": {
     "angular-mocks": "^1.3.0"
   },
