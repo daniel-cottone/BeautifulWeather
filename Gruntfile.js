@@ -21,11 +21,25 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // Load coveralls
+  grunt.loadNpmTasks('grunt-karma-coveralls');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
     yeoman: appConfig,
+
+    // Coveralls settings
+    coveralls: {
+      options: {
+        debug: true,
+        coverageDir: 'coverage',
+        dryRun: false,
+        force: true,
+        recursive: true
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {

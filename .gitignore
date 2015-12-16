@@ -1,7 +1,7 @@
-node_modules
-dist
+bower_components/
+node_modules/
+coverage/
+dist/
 .tmp
 .sass-cache
-bower_components
-
 .DS_Store

@@ -55,10 +55,20 @@ module.exports = function(config) {
       "PhantomJS"
     ],
 
+    reporters: ['coverage'],
+    preprocessors: {
+      'app/scripts/**/*.js': ['coverage']
+    },
+    coverageReporter: {
+      type: 'lcovonly',
+      dir: 'coverage/'
+    },
+
     // Which plugins to enable
     plugins: [
-      "karma-phantomjs-launcher",
-      "karma-jasmine"
+      'karma-coverage',
+      'karma-phantomjs-launcher',
+      'karma-jasmine'
     ],
 
     // Continuous Integration mode
