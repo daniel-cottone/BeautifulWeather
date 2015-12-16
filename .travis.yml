@@ -8,6 +8,7 @@ before_script:
 script:
 - grunt build
 after_script:
+- grunt test
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 deploy:
   - provider: s3
