@@ -358,13 +358,13 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: 'bower_components/lato',
-          flatten: false,
           src: 'font/*',
           dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
           cwd: 'bower_components/weather-icons',
-          src: 'font/*',
+          flatten: false,
+          src: ['font/**/*'],
           dest: '<%= yeoman.dist %>'
         }]
       },
