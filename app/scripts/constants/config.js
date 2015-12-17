@@ -9,6 +9,10 @@
  */
 angular.module('weatherForecastApp')
   .constant('CONFIG', {
+    addressUrl: 'http://maps.googleapis.com/maps/api/geocode/json',
+    forecastUrl: 'http://api.openweathermap.org/data/2.5/forecast/daily',
+    weatherUrl: 'http://api.openweathermap.org/data/2.5/weather',
+    openWeatherMapAPIKey: 'a43a8cf92f1e7752811377ddfbb60839',
     codeList: [
       {
         code: '01d',

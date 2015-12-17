@@ -15,6 +15,13 @@ describe('Service: CONFIG', function () {
     expect(CONFIG).toBeDefined();
   });
 
+  it('should contain API information', function () {
+    expect(CONFIG.addressUrl).toBeDefined();
+    expect(CONFIG.forecastUrl).toBeDefined();
+    expect(CONFIG.weatherUrl).toBeDefined();
+    expect(CONFIG.openWeatherMapAPIKey).toBeDefined();
+  });
+
   it('should contain a code list', function () {
     expect(CONFIG.codeList).toBeDefined();
     angular.forEach(CONFIG.codeList, function (obj) {

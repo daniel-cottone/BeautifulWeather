@@ -8,8 +8,8 @@
  * Factory in the weatherForecastApp.
  */
 angular.module('weatherForecastApp')
-  .factory('Address', function ($resource) {
-    return $resource('http://maps.googleapis.com/maps/api/geocode/json', {}, {
+  .factory('Address', function ($resource, CONFIG) {
+    return $resource(CONFIG.addressUrl, {}, {
       'query': { method: 'GET', params: { action: 'read', format: '.json' } , isArray : false }
     });
   });
