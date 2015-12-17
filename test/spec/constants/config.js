@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Utils', function () {
+describe('Service: CONFIG', function () {
 
   // load the service's module
   beforeEach(module('weatherForecastApp'));
 
   // instantiate service
-  var Utils;
-  beforeEach(inject(function (_Utils_) {
-    Utils = _Utils_;
+  var CONFIG;
+  beforeEach(inject(function (_CONFIG_) {
+    CONFIG = _CONFIG_;
   }));
 
   it('should exist', function () {
-    expect(!!Utils).toBe(true);
+    expect(!!CONFIG).toBe(true);
   });
 
 });
