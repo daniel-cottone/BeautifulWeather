@@ -28,6 +28,12 @@ describe('Controller: MainCtrl', function () {
 
   beforeEach(function () {
     spyOn(Address, 'query').and.callThrough();
+    spyOn(Weather, 'query').and.callThrough();
+    spyOn(Forecast, 'query').and.callThrough();
+    spyOn(scope, 'callAddress').and.callThrough();
+    spyOn(scope, 'callWeather').and.callThrough();
+    spyOn(scope, 'callForecast').and.callThrough();
+    spyOn(scope, 'getWeather').and.callThrough();
   });
 
   it('should exist', function () {
@@ -38,10 +44,42 @@ describe('Controller: MainCtrl', function () {
     expect(scope.city).toBeUndefined();
   });
 
-  it('should collect address data from API', function () {
+  it('should get address data and set scope objects', function () {
+    var city = 'Nashville';
+    scope.callAddress(city).then(function () {
+      expect(Address.query).toHaveBeenCalled();
+      expect(scope.address).toBeDefined();
+      expect(scope.formattedAddress).toBeDefined();
+      expect(scope.location).toBeDefined();
+    });
+  });
+
+  it('should get weather data and set scope objects', function () {
+    var latitude = '40';
+    var longitude = '40';
+    scope.callWeather(latitude, longitude).then(function () {
+      expect(Weather.query).toHaveBeenCalled();
+      expect(scope.weather).toBeDefined();
+    });
+  });
+
+  it('should get forecast data and set scope objects', function () {
+    var latitude = '40';
+    var longitude = '40';
+    scope.callForecast(latitude, longitude).then(function () {
+      expect(Forecast.query).toHaveBeenCalled();
+      expect(scope.forecast).toBeDefined();
+    });
+  });
+
+  // TODO: incomplete
+  it('should call promise chain to resolve data from API', function () {
     scope.city = 'Nashville';
-    scope.getWeather();
-    expect(Address.query).toHaveBeenCalled();
+    scope.getWeather().then(function () {
+      expect(scope.callAddress).toHaveBeenCalled();
+      expect(scope.callWeather).toHaveBeenCalled();
+      expect(scope.callForecast).toHaveBeenCalled();
+    });
   });
 
   it('should call Utils setBackground', function () {
