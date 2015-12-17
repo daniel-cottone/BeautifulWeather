@@ -8,7 +8,7 @@
  * Controller of the weatherForecastApp
  */
 angular.module('weatherForecastApp')
-  .controller('MainCtrl', function ($scope, $animate, Address, Forecast, Weather) {
+  .controller('MainCtrl', function ($scope, $animate, Address, Forecast, Weather, Utils) {
 
     // Promise chain to resolve address, current weather, and 7 day forecast
     $scope.getWeather = function() {
@@ -85,28 +85,7 @@ angular.module('weatherForecastApp')
 
     // Sets the weather icon class
     $scope.setClass = function(code) {
-      switch(code) {
-        case '01d':
-          return 'wi wi-day-sunny';
-        case '02d':
-          return 'wi wi-day-cloudy';
-        case '03d':
-          return 'wi wi-cloudy';
-        case '04d':
-          return 'wi wi-cloudy';
-        case '09d':
-          return 'wi wi-showers';
-        case '10d':
-          return 'wi wi-rain';
-        case '11d':
-          return 'wi wi-thunderstorm';
-        case '13d':
-          return 'wi wi-snow';
-        case '50d':
-          return 'wi wi-fog';
-        default:
-          return 'wi wi-day-sunny';
-      }
+      return Utils.setClass(code);
     };
 
   });

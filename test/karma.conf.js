@@ -55,7 +55,7 @@ module.exports = function(config) {
       "PhantomJS"
     ],
 
-    reporters: ['coverage'],
+    reporters: ['dots','progress','coverage'],
     preprocessors: {
       'app/scripts/**/*.js': ['coverage']
     },
