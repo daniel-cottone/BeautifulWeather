@@ -15,4 +15,13 @@ describe('Service: CONFIG', function () {
     expect(!!CONFIG).toBe(true);
   });
 
+  it('should contain a code list', function () {
+    expect(CONFIG.codeList).toBeDefined();
+    angular.forEach(CONFIG.codeList, function (obj) {
+      expect(obj.code).toBeDefined();
+      expect(obj.iconClass).toBeDefined();
+      expect(obj.backgroundClass).toBeDefined();
+    });
+  });
+
 });

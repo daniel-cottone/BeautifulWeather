@@ -9,46 +9,101 @@
  */
 angular.module('weatherForecastApp')
   .constant('CONFIG', {
-    weatherClasses: [
+    codeList: [
       {
         code: '01d',
-        classString: 'wi wi-day-sunny'
+        iconClass: 'wi wi-day-sunny',
+        backgroundClass: 'day-clear'
+      },
+      {
+        code: '01n',
+        iconClass: 'wi wi-day-sunny',
+        backgroundClass: 'night-clear'
       },
       {
         code: '02d',
-        classString: 'wi wi-day-cloudy'
+        iconClass: 'wi wi-day-cloudy',
+        backgroundClass: 'day-clear'
+      },
+      {
+        code: '02n',
+        iconClass: 'wi wi-day-cloudy',
+        backgroundClass: 'night-cloudy'
       },
       {
         code: '03d',
-        classString: 'wi wi-cloudy'
+        iconClass: 'wi wi-cloudy',
+        backgroundClass: 'cloudy'
+      },
+      {
+        code: '03n',
+        iconClass: 'wi wi-cloudy',
+        backgroundClass: 'night-cloudy'
       },
       {
         code: '04d',
-        classString: 'wi wi-cloudy'
+        iconClass: 'wi wi-cloudy',
+        backgroundClass: 'cloudy'
+      },
+      {
+        code: '04n',
+        iconClass: 'wi wi-cloudy',
+        backgroundClass: 'night-cloudy'
       },
       {
         code: '09d',
-        classString: 'wi wi-showers'
+        iconClass: 'wi wi-showers',
+        backgroundClass: 'rainy'
+      },
+      {
+        code: '09n',
+        iconClass: 'wi wi-showers',
+        backgroundClass: 'rainy'
       },
       {
         code: '10d',
-        classString: 'wi wi-rain'
+        iconClass: 'wi wi-rain',
+        backgroundClass: 'rainy'
+      },
+      {
+        code: '10n',
+        iconClass: 'wi wi-rain',
+        backgroundClass: 'rainy'
       },
       {
         code: '11d',
-        classString: 'wi wi-thunderstorm'
+        iconClass: 'wi wi-thunderstorm',
+        backgroundClass: 'thunderstorm'
+      },
+      {
+        code: '11n',
+        iconClass: 'wi wi-thunderstorm',
+        backgroundClass: 'thunderstorm'
       },
       {
         code: '13d',
-        classString: 'wi wi-snow'
+        iconClass: 'wi wi-snow',
+        backgroundClass: 'default'
+      },
+      {
+        code: '13n',
+        iconClass: 'wi wi-snow',
+        backgroundClass: 'default'
       },
       {
         code: '50d',
-        classString: 'wi wi-fog'
+        iconClass: 'wi wi-fog',
+        backgroundClass: 'foggy'
+      },
+      {
+        code: '50n',
+        iconClass: 'wi wi-fog',
+        backgroundClass: 'foggy'
       },
       {
         code: null,
-        classString: 'wi wi-day-sunny'
+        iconClass: 'wi wi-day-sunny',
+        backgroundClass: 'default'
       }
     ]
   });

@@ -12,16 +12,23 @@ angular.module('weatherForecastApp')
 
     return {
       setClass: function (code) {
-        var classString;
-        angular.forEach(CONFIG.weatherClasses, function (obj) {
+        var iconClass;
+        angular.forEach(CONFIG.codeList, function (obj) {
           if (obj.code === code) {
-            classString = obj.classString;
+            iconClass = obj.iconClass;
           }
         });
-        return classString;
+        return iconClass;
       },
 
-      setBackground: function () {
+      setBackground: function (code) {
+        var backgroundClass;
+        angular.forEach(CONFIG.codeList, function (obj) {
+          if (obj.code === code) {
+            backgroundClass = obj.backgroundClass;
+          }
+        });
+        return backgroundClass;
       }
     };
 

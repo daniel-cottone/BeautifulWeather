@@ -16,10 +16,17 @@ describe('Service: Utils', function () {
     expect(!!Utils).toBe(true);
   });
 
-  it('should correctly assign classes based on configuration', function () {
-    angular.forEach(CONFIG.weatherClasses, function (obj) {
-      var classString = Utils.setClass(obj.code);
-      expect(classString).toBe(obj.classString);
+  it('should correctly return class string based on configuration', function () {
+    angular.forEach(CONFIG.codeList, function (obj) {
+      var iconClass = Utils.setClass(obj.code);
+      expect(iconClass).toBe(obj.iconClass);
+    });
+  });
+
+  it('should correctly return background string based on configuration', function () {
+    angular.forEach(CONFIG.codeList, function (obj) {
+      var backgroundClass = Utils.setBackground(obj.code);
+      expect(backgroundClass).toBe(obj.backgroundClass);
     });
   });
 

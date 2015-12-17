@@ -23,6 +23,7 @@ describe('Controller: MainCtrl', function () {
     spyOn(Address, 'query').and.callThrough();
     spyOn(Forecast, 'query').and.callThrough();
     spyOn(Weather, 'query').and.callThrough();
+    spyOn(Utils, 'setBackground').and.callThrough();
     spyOn(Utils, 'setClass').and.callThrough();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
@@ -41,6 +42,11 @@ describe('Controller: MainCtrl', function () {
     scope.getWeather();
     expect(Forecast.query).toHaveBeenCalled();
   });*/
+
+  it('should call Utils setBackground', function () {
+    scope.setBackground();
+    expect(Utils.setBackground).toHaveBeenCalled();
+  });
 
   it('should call Utils setClass', function () {
     scope.setClass();
