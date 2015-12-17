@@ -12,7 +12,7 @@ describe('Service: Address', function () {
   }));
 
   it('should exist', function () {
-    expect(!!Address).toBe(true);
+    expect(Address).toBeDefined();
   });
 
 });

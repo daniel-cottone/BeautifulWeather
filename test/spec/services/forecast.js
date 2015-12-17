@@ -12,7 +12,7 @@ describe('Service: Forecast', function () {
   }));
 
   it('should exist', function () {
-    expect(!!Forecast).toBe(true);
+    expect(Forecast).toBeDefined();
   });
 
 });

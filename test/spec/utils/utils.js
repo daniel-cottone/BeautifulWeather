@@ -13,7 +13,7 @@ describe('Service: Utils', function () {
   }));
 
   it('should exist', function () {
-    expect(!!Utils).toBe(true);
+    expect(Utils).toBeDefined();
   });
 
   it('should correctly return class string based on configuration', function () {

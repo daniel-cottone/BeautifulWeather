@@ -12,7 +12,7 @@ describe('Service: CONFIG', function () {
   }));
 
   it('should exist', function () {
-    expect(!!CONFIG).toBe(true);
+    expect(CONFIG).toBeDefined();
   });
 
   it('should contain a code list', function () {

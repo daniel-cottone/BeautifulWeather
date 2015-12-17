@@ -12,7 +12,7 @@ describe('Service: Weather', function () {
   }));
 
   it('should exist', function () {
-    expect(!!Weather).toBe(true);
+    expect(Weather).toBeDefined();
   });
 
 });
