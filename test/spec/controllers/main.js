@@ -93,10 +93,15 @@ describe('Controller: MainCtrl', function () {
 
   it('should call promise chain to resolve data from API', function () {
     scope.city = 'Nashville';
-    scope.getWeather().then(function () {
+    scope.getWeather().then(function (result) {
       expect(scope.callAddress).toHaveBeenCalled();
+      expect(scope.callAddress).toBe(result);
+    }).then(function (result) {
       expect(scope.callWeather).toHaveBeenCalled();
+      expect(scope.callWeather).toBe(result);
+    }).then(function (result) {
       expect(scope.callForecast).toHaveBeenCalled();
+      expect(scope.callForecast).toBe(result);
     });
   });
 
