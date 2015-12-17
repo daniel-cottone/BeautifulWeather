@@ -33,6 +33,7 @@ describe('Controller: MainCtrl', function () {
     spyOn(scope, 'callAddress').and.callThrough();
     spyOn(scope, 'callWeather').and.callThrough();
     spyOn(scope, 'callForecast').and.callThrough();
+    spyOn(scope, 'setBackground').and.callThrough();
     spyOn(scope, 'getWeather').and.callThrough();
   });
 
@@ -46,33 +47,50 @@ describe('Controller: MainCtrl', function () {
 
   it('should get address data and set scope objects', function () {
     var city = 'Nashville';
-    scope.callAddress(city).then(function () {
+
+    scope.callAddress(city).then(function (result) {
+      var address = result;
+      var formattedAddress = address.results[0].formatted_address;
+      var location = address.results[0].geometry.location;
+
       expect(Address.query).toHaveBeenCalled();
       expect(scope.address).toBeDefined();
+      expect(scope.address).toBe(address);
       expect(scope.formattedAddress).toBeDefined();
+      expect(scope.formattedAddress).toBe(formattedAddress);
       expect(scope.location).toBeDefined();
+      expect(scope.location).toBe(location);
     });
   });
 
   it('should get weather data and set scope objects', function () {
     var latitude = '40';
     var longitude = '40';
-    scope.callWeather(latitude, longitude).then(function () {
+
+    scope.callWeather(latitude, longitude).then(function (result) {
+      var weather = result;
+      var icon = weather.weather[0].icon;
+
       expect(Weather.query).toHaveBeenCalled();
       expect(scope.weather).toBeDefined();
+      expect(scope.weather).toBe(weather);
+      expect(scope.setBackground).toHaveBeenCalledWith(icon);
     });
   });
 
   it('should get forecast data and set scope objects', function () {
     var latitude = '40';
     var longitude = '40';
-    scope.callForecast(latitude, longitude).then(function () {
+
+    scope.callForecast(latitude, longitude).then(function (result) {
+      var forecast = result;
+
       expect(Forecast.query).toHaveBeenCalled();
       expect(scope.forecast).toBeDefined();
+      expect(scope.forecast).toBe(forecast);
     });
   });
 
-  // TODO: incomplete
   it('should call promise chain to resolve data from API', function () {
     scope.city = 'Nashville';
     scope.getWeather().then(function () {
