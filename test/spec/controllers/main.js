@@ -8,7 +8,6 @@ describe('Controller: MainCtrl', function () {
   // Controller variables
   var MainCtrl,
     scope,
-    state,
     httpBackend,
     Address,
     Forecast,
@@ -23,9 +22,8 @@ describe('Controller: MainCtrl', function () {
     mockForecastResults;
 
   // Initialize the controller, mock scope and services
-  beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Address_, _Forecast_, _Weather_, _Utils_, _CONFIG_) {
+  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, _Address_, _Forecast_, _Weather_, _Utils_, _CONFIG_) {
     scope = $rootScope.$new();
-    state = _$state_;
     httpBackend = _$httpBackend_;
     Address = _Address_;
     Forecast = _Forecast_;
@@ -98,14 +96,6 @@ describe('Controller: MainCtrl', function () {
   it('should exist', function () {
     expect(MainCtrl).toBeDefined();
   });
-
-  /*it('should transition state to main', function () {
-    httpBackend.expectGET('views/main.html').respond(200);
-    httpBackend.flush();
-    state.transitionTo('main');
-    scope.$apply();*
-    expect(state.current.name).toBe('main');
-  });*/
 
   it('should not have defined city in scope', function () {
     expect(scope.city).toBeUndefined();
