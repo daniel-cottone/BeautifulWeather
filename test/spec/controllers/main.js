@@ -5,8 +5,10 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('weatherForecastApp'));
 
+  // Controller variables
   var MainCtrl,
     scope,
+    state,
     httpBackend,
     Address,
     Forecast,
@@ -14,12 +16,16 @@ describe('Controller: MainCtrl', function () {
     Utils,
     CONFIG;
 
+  // Mock data
   var mockSearch,
-    mockAddressResults;
+    mockAddressResults,
+    mockWeatherResults,
+    mockForecastResults;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, _Address_, _Forecast_, _Weather_, _Utils_, _CONFIG_) {
+  // Initialize the controller, mock scope and services
+  beforeEach(inject(function ($controller, $rootScope, _$state_, _$httpBackend_, _Address_, _Forecast_, _Weather_, _Utils_, _CONFIG_) {
     scope = $rootScope.$new();
+    state = _$state_;
     httpBackend = _$httpBackend_;
     Address = _Address_;
     Forecast = _Forecast_;
@@ -31,6 +37,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
+  // Initialize mock data and configure spies
   beforeEach(function () {
     mockSearch = 'Nashville';
     mockAddressResults = {
@@ -46,6 +53,20 @@ describe('Controller: MainCtrl', function () {
         }
       ]
     };
+    mockWeatherResults = {
+      weather: [
+        {
+          icon: '04d',
+          main: 'Clouds'
+        }
+      ],
+      main: {
+        temp: 34.47,
+        humidity: 64
+      },
+      dt: 1450453553
+    };
+    mockForecastResults = {};
 
     spyOn(Address, 'query').and.callThrough();
     spyOn(Weather, 'query').and.callThrough();
@@ -61,7 +82,12 @@ describe('Controller: MainCtrl', function () {
     expect(MainCtrl).toBeDefined();
   });
 
-  /*it('should transition state to main page', function () {
+  /*it('should transition state to main', function () {
+    httpBackend.expectGET('views/main.html').respond(200);
+    httpBackend.flush();
+    state.transitionTo('main');
+    scope.$apply();*
+    expect(state.current.name).toBe('main');
   });*/
 
   it('should not have defined city in scope', function () {
@@ -75,6 +101,7 @@ describe('Controller: MainCtrl', function () {
       var location = address.geometry.location;
 
       expect(Address.query).toHaveBeenCalled();
+      expect(angular.equals(result, mockAddressResults)).toBe(true);
       expect(scope.address).toBeDefined();
       expect(scope.address).toEqual(address);
       expect(scope.formattedAddress).toBeDefined();
@@ -83,7 +110,7 @@ describe('Controller: MainCtrl', function () {
       expect(scope.location).toEqual(location);
     });
 
-    httpBackend.expectGET(CONFIG.addressUrl + '?action=read&address=Nashville&format=.json').respond(mockAddressResults);
+    httpBackend.expectGET(CONFIG.addressUrl + '?action=read&address=' + mockSearch + '&format=.json').respond(mockAddressResults);
     httpBackend.expectGET('views/main.html').respond(200);
     httpBackend.flush();
   });
@@ -93,18 +120,19 @@ describe('Controller: MainCtrl', function () {
     var longitude = mockAddressResults.results[0].geometry.location.lon;
 
     scope.callWeather(latitude, longitude).$promise.then(function (result) {
-      var weather = result;
+      var weather = mockWeatherResults;
       var icon = weather.weather[0].icon;
 
       expect(Weather.query).toHaveBeenCalled();
+      expect(angular.equals(result, mockWeatherResults)).toBe(true);
       expect(scope.weather).toBeDefined();
-      expect(scope.weather).toBe(weather);
+      expect(angular.equals(scope.weather, weather)).toBe(true);
       expect(scope.setBackground).toHaveBeenCalledWith(icon);
     });
 
-    /*httpBackend.expectGET(CONFIG.weatherUrl + '?APPID=' + CONFIG.openWeatherMapAPIKey + '&action=read&format=.json&lat=' + latitude + '&lon=' + longitude + '&units=imperial').respond(200);
+    httpBackend.expectGET(CONFIG.weatherUrl + '?APPID=' + CONFIG.openWeatherMapAPIKey + '&action=read&format=.json&lat=' + latitude + '&lon=' + longitude + '&units=imperial').respond(mockWeatherResults);
     httpBackend.expectGET('views/main.html').respond(200);
-    httpBackend.flush();*/
+    httpBackend.flush();
   });
 
   it('should get forecast data and set scope objects', function () {
@@ -124,13 +152,13 @@ describe('Controller: MainCtrl', function () {
     scope.city = mockSearch;
     scope.getWeather().then(function (result) {
       expect(scope.callAddress).toHaveBeenCalled();
-      expect(scope.callAddress).toBe(result);
+      expect(angular.equals(result, scope.callAddress)).toBe(true);
     }).then(function (result) {
       expect(scope.callWeather).toHaveBeenCalled();
-      expect(scope.callWeather).toBe(result);
+      expect(angular.equals(result, scope.callWeather)).toBe(true);
     }).then(function (result) {
       expect(scope.callForecast).toHaveBeenCalled();
-      expect(scope.callForecast).toBe(result);
+      expect(angular.equals(result, scope.callForecast)).toBe(true);
     });
   });
 
