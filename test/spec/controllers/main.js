@@ -66,7 +66,24 @@ describe('Controller: MainCtrl', function () {
       },
       dt: 1450453553
     };
-    mockForecastResults = {};
+    mockForecastResults = {
+      list: [
+        {
+          dt: 1450453553,
+          temp: {
+            max: 55,
+            min: 35
+          }
+        },
+        {
+          dt: 1450453554,
+          temp: {
+            max: 54,
+            min: 34
+          }
+        }
+      ]
+    };
 
     spyOn(Address, 'query').and.callThrough();
     spyOn(Weather, 'query').and.callThrough();
@@ -140,12 +157,17 @@ describe('Controller: MainCtrl', function () {
     var longitude = mockAddressResults.results[0].geometry.location.lon;
 
     scope.callForecast(latitude, longitude).$promise.then(function (result) {
-      var forecast = result;
+      var forecast = mockForecastResults;
 
       expect(Forecast.query).toHaveBeenCalled();
+      expect(angular.equals(result, mockForecastResults)).toBe(true);
       expect(scope.forecast).toBeDefined();
-      expect(scope.forecast).toBe(forecast);
+      expect(angular.equals(scope.forecast, forecast)).toBe(true);
     });
+
+    httpBackend.expectGET(CONFIG.forecastUrl + '?APPID=' + CONFIG.openWeatherMapAPIKey + '&action=read&format=.json&lat=' + latitude + '&lon=' + longitude + '&units=imperial').respond(mockForecastResults);
+    httpBackend.expectGET('views/main.html').respond(200);
+    httpBackend.flush();
   });
 
   it('should call promise chain to resolve data from API', function () {
