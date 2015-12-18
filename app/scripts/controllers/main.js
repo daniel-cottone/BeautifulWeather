@@ -12,32 +12,32 @@ angular.module('weatherForecastApp')
 
     $scope.callAddress = function (city) {
       return Address.query({ address: city }, function (data) {
-        $scope.address = data;
-        $scope.formattedAddress = $scope.address.results[0].formatted_address;
-        $scope.location = $scope.address.results[0].geometry.location;
-      }).$promise;
+        $scope.address = data.results[0];
+        $scope.formattedAddress = $scope.address.formatted_address;
+        $scope.location = $scope.address.geometry.location;
+      });
     };
 
     $scope.callWeather = function (latitude, longitude) {
       return Weather.query({ lat: latitude, lon: longitude, units: 'imperial' }, function (data) {
         $scope.weather = data;
         $scope.setBackground($scope.weather.weather[0].icon);
-      }).$promise;
+      });
     };
 
     $scope.callForecast = function (latitude, longitude) {
       return Forecast.query({ lat: latitude, lon: longitude, units: 'imperial' }, function (data) {
         $scope.forecast = data;
-      }).$promise;
+      });
     };
 
     // Promise chain to resolve address, current weather, and 7 day forecast
     $scope.getWeather = function () {
-      return $scope.callAddress($scope.city)
+      return $scope.callAddress($scope.city).$promise
       .then(function () {
-        return $scope.callWeather($scope.location.lat, $scope.location.lng)
+        return $scope.callWeather($scope.location.lat, $scope.location.lng).$promise
         .then(function () {
-          return $scope.callForecast($scope.location.lat, $scope.location.lng);
+          return $scope.callForecast($scope.location.lat, $scope.location.lng).$promise;
         });
       });
     };
