@@ -149,15 +149,18 @@ describe('Controller: MainCtrl', function () {
   });
 
   it('should call promise chain to resolve data from API', function () {
+    var latitude = mockAddressResults.results[0].geometry.location.lat;
+    var longitude = mockAddressResults.results[0].geometry.location.lon;
+
     scope.city = mockSearch;
     scope.getWeather().then(function (result) {
-      expect(scope.callAddress).toHaveBeenCalled();
+      expect(scope.callAddress).toHaveBeenCalledWith(mockSearch);
       expect(angular.equals(result, scope.callAddress)).toBe(true);
     }).then(function (result) {
-      expect(scope.callWeather).toHaveBeenCalled();
+      expect(scope.callWeather).toHaveBeenCalledWith(latitude, longitude);
       expect(angular.equals(result, scope.callWeather)).toBe(true);
     }).then(function (result) {
-      expect(scope.callForecast).toHaveBeenCalled();
+      expect(scope.callForecast).toHaveBeenCalledWith(latitude, longitude);
       expect(angular.equals(result, scope.callForecast)).toBe(true);
     });
   });
