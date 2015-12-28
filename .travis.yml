@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - '0.12'
 before_script:
+- npm install -g newman
+- newman -u https://www.getpostman.com/collections/4c95e9cd1a3b599a9fb7
 - npm install -g bower karma grunt-cli jshint
 - npm install
 - bower install
