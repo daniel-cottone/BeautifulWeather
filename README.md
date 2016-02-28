@@ -6,7 +6,7 @@
 
 ## Build & development
 
-Run `grunt build` for building and `grunt serve` for preview.
+Run `npm install && bower install && grunt build` for building and `grunt serve` for preview.
 
 ## Testing
 
