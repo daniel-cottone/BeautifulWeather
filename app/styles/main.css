@@ -22,35 +22,43 @@ body:after {
 
 /* Background styles */
 .default {
-  background: url("../images/default.jpg") no-repeat;
+  background: url("../images/default.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .day-clear {
-  background: url("../images/day-clear.jpg") no-repeat;
+  background: url("../images/day-clear.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .night-clear {
-  background: url("../images/night-clear.jpg") no-repeat;
+  background: url("../images/night-clear.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .night-cloudy {
-  background: url("../images/night-cloudy.jpg") no-repeat;
+  background: url("../images/night-cloudy.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .cloudy {
-  background: url("../images/cloudy.jpg") no-repeat;
+  background: url("../images/cloudy.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .rainy {
-  background: url("../images/rainy.jpg") no-repeat;
+  background: url("../images/rainy.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .thunderstorm {
-  background: url("../images/thunderstorm.jpg") no-repeat;
+  background: url("../images/thunderstorm.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .foggy {
-  background: url("../images/foggy.jpg") no-repeat;
+  background: url("../images/foggy.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* centered columns styles */
