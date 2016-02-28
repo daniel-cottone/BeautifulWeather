@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.12'
+- '4.1'
 before_script:
 - npm install -g newman
 - newman -u https://www.getpostman.com/collections/4c95e9cd1a3b599a9fb7
