@@ -16,7 +16,7 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
-      "jasmine"
+      'jasmine'
     ],
 
     // list of files / patterns to load in the browser
@@ -55,10 +55,16 @@ module.exports = function(config) {
       'PhantomJS'
     ],
 
-    reporters: ['dots','progress','coverage'],
+    reporters: [
+      'dots',
+      'progress',
+      'coverage'
+    ],
+
     preprocessors: {
       'app/scripts/**/*.js': ['coverage']
     },
+    
     coverageReporter: {
       type: 'lcovonly',
       dir: 'coverage/'

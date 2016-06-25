@@ -22,7 +22,8 @@
   "globals": {
     "angular": false,
     "browser": false,
+    "by": false,
+    "element": false,
     "inject": false
   }
 }
-

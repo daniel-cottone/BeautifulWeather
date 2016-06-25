@@ -117,6 +117,25 @@ module.exports = function (grunt) {
           }
         }
       },
+      e2e: {
+        options: {
+          port: 9001,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect().use(
+                '/app/styles',
+                connect.static('./app/styles')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
       dist: {
         options: {
           open: true,
@@ -408,11 +427,30 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+    protractor_webdriver: {
+      options: {},
+      all: {
+        path: './node_modules/protractor/bin/',
+        command: 'webdriver-manager start'
+      }
+    },
+    protractor: {
+      options: {},
+      all: {
+        options: {
+          configFile: './test/e2e/protractor.conf.js'
+        }
+      }
     }
   });
 
-  // Load coveralls
-  grunt.loadNpmTasks('grunt-karma-coveralls');
+  // Load testing tools
+  grunt.loadNpmTasks(
+    'grunt-protractor-runner',
+    'grunt-protractor-webdriver',
+    'grunt-karma-coveralls'
+  );
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -441,6 +479,16 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma'
+  ]);
+
+  grunt.registerTask('e2e', [
+    'clean:server',
+    'wiredep',
+    'protractor_webdriver',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:e2e',
+    'protractor'
   ]);
 
   grunt.registerTask('build', [
