@@ -10,7 +10,13 @@ describe('BeautifulWeather: Index', function () {
     page.visit();
   });
 
-  it('should properly load expected elements', function () {
+  it('should display properly on page load', function () {
     expect(page.cityInput.isDisplayed()).toEqual(true);
+    expect(page.currentWeatherDiv.isDisplayed()).toEqual(false);
+  });
+
+  it('should display weather information', function () {
+    page.setCityInput('Nashville');
+    expect(page.currentWeatherDiv.isDisplayed()).toEqual(true);
   });
 });

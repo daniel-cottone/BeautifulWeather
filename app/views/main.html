@@ -25,7 +25,7 @@
 
   <!-- Current weather -->
   <div class="row row-centered top-buffer">
-    <div class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (formattedAddress != null)">
+    <div id="current-weather" class="col-md-4 col-centered forecast-item forecast-animate" ng-show="city && (formattedAddress != null)">
       <p class="h3 text-center">
         <span ng-show="formattedAddress">{{ formattedAddress }}</span>
       </p>
@@ -43,7 +43,7 @@
 
   <!-- 7 day forecast -->
   <div class="row row-centered">
-    <div class="col-md-1 col-centered col-min forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
+    <div id="forecast-day" class="col-md-1 col-centered col-min forecast-item forecast-animate" ng-repeat="day in forecast.list track by $index" ng-show="city">
       <p class="text-center">
         {{ (day.dt * 1000) | date: 'EEE, MMM d' }}
       </p>
