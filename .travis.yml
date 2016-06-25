@@ -45,6 +45,7 @@ deploy:
       branch: master
 after_deploy:
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then grunt e2e:travis-dev; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then grunt e2e:travis-prod; fi
 notifications:
   email: false
   webhooks:
