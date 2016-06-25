@@ -446,6 +446,26 @@ module.exports = function (grunt) {
         options: {
           configFile: './test/e2e/configs/dev.conf.js'
         }
+      },
+      prod: {
+        options: {
+          configFile: './test/e2e/configs/prod.conf.js'
+        }
+      },
+      travis_local: {
+        options: {
+          configFile: './test/e2e/configs/travis-default.conf.js'
+        }
+      },
+      travis_dev: {
+        options: {
+          configFile: './test/e2e/configs/travis-dev.conf.js'
+        }
+      },
+      travis_prod: {
+        options: {
+          configFile: './test/e2e/configs/travis-prod.conf.js'
+        }
       }
     }
   });
@@ -503,11 +523,11 @@ module.exports = function (grunt) {
       ]);
 
       if (target === 'travis-local') {
-        grunt.task.run(['protractor:local']);
+        grunt.task.run(['protractor:travis_local']);
       } else if (target === 'travis-dev') {
-        grunt.task.run(['protractor:dev']);
+        grunt.task.run(['protractor:travis_dev']);
       } else if (target === 'travis-prod') {
-        grunt.task.run(['protractor:prod']);
+        grunt.task.run(['protractor:travis_prod']);
       } else {
         grunt.task.run(['protractor:local']);
       }

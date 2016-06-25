@@ -15,7 +15,7 @@ script:
 after_script:
 - grunt test
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-- grunt e2e
+- grunt e2e:travis-local
 deploy:
   - provider: s3
     bucket: "beautiful-weather-test"
