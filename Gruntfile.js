@@ -439,7 +439,7 @@ module.exports = function (grunt) {
       options: {},
       all: {
         options: {
-          configFile: './test/e2e/protractor.conf.js'
+          configFile: './test/e2e/configs/default.conf.js'
         }
       }
     }

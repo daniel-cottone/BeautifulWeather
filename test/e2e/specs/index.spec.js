@@ -1,6 +1,6 @@
 'use strict';
 
-var IndexPage = require('../pages/indexpage');
+var IndexPage = require('../pages/index.page');
 
 describe('BeautifulWeather: Index', function () {
   var page;
