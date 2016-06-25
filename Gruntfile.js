@@ -432,14 +432,19 @@ module.exports = function (grunt) {
       options: {},
       all: {
         path: './node_modules/protractor/bin/',
-        command: 'webdriver-manager start'
+        command: 'webdriver-manager update && webdriver-manager start'
       }
     },
     protractor: {
       options: {},
-      all: {
+      local: {
         options: {
           configFile: './test/e2e/configs/default.conf.js'
+        }
+      },
+      dev: {
+        options: {
+          configFile: './test/e2e/configs/dev.conf.js'
         }
       }
     }
@@ -481,15 +486,34 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('e2e', [
-    'clean:server',
-    'wiredep',
-    'protractor_webdriver',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:e2e',
-    'protractor'
-  ]);
+  grunt.registerTask('e2e', function (target) {
+    grunt.task.run(['protractor_webdriver']);
+
+    if (target === 'dev') {
+      grunt.task.run(['protractor:dev']);
+    } else if (target === 'prod') {
+      grunt.task.run(['protractor:prod']);
+    } else {
+      grunt.task.run([
+        'clean:server',
+        'wiredep',
+        'concurrent:test',
+        'autoprefixer',
+        'connect:e2e'
+      ]);
+
+      if (target === 'travis-local') {
+        grunt.task.run(['protractor:local']);
+      } else if (target === 'travis-dev') {
+        grunt.task.run(['protractor:dev']);
+      } else if (target === 'travis-prod') {
+        grunt.task.run(['protractor:prod']);
+      } else {
+        grunt.task.run(['protractor:local']);
+      }
+    }
+
+  });
 
   grunt.registerTask('build', [
     'clean:dist',

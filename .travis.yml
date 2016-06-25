@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '4.1'
+- '4.2'
 before_script:
 - npm install -g newman
 - newman -u https://www.getpostman.com/collections/4c95e9cd1a3b599a9fb7
@@ -14,6 +14,7 @@ script:
 after_script:
 - grunt test
 - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+- grunt e2e
 deploy:
   - provider: s3
     bucket: "beautiful-weather-test"
@@ -42,7 +43,7 @@ deploy:
     on:
       branch: master
 after_deploy:
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then grunt e2e; fi
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then grunt e2e:travis-dev; fi
 notifications:
   email: false
   webhooks:
