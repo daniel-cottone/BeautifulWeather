@@ -31,9 +31,9 @@ module.exports = function(config) {
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
-      "app/scripts/**/*.js",
-      "test/mock/**/*.js",
-      "test/spec/**/*.js"
+      'app/scripts/**/*.js',
+      'test/mock/**/*.js',
+      'test/unit/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -52,7 +52,7 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS"
+      'PhantomJS'
     ],
 
     reporters: ['dots','progress','coverage'],
