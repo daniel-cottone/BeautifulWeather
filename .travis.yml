@@ -7,6 +7,8 @@ before_script:
 - npm install -g bower karma grunt-cli jshint
 - npm install
 - bower install
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
 script:
 - grunt build
 after_script:
@@ -39,6 +41,8 @@ deploy:
     local-dir: dist
     on:
       branch: master
+after_deploy:
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then grunt e2e; fi
 notifications:
   email: false
   webhooks:
