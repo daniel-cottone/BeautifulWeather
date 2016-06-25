@@ -513,6 +513,10 @@ module.exports = function (grunt) {
       grunt.task.run(['protractor:dev']);
     } else if (target === 'prod') {
       grunt.task.run(['protractor:prod']);
+    } else if (target === 'travis-dev') {
+      grunt.task.run(['protractor:travis_dev']);
+    } else if (target === 'travis-prod') {
+      grunt.task.run(['protractor:travis_prod']);
     } else {
       grunt.task.run([
         'clean:server',
@@ -524,15 +528,10 @@ module.exports = function (grunt) {
 
       if (target === 'travis-local') {
         grunt.task.run(['protractor:travis_local']);
-      } else if (target === 'travis-dev') {
-        grunt.task.run(['protractor:travis_dev']);
-      } else if (target === 'travis-prod') {
-        grunt.task.run(['protractor:travis_prod']);
       } else {
         grunt.task.run(['protractor:local']);
       }
     }
-
   });
 
   grunt.registerTask('build', [
